@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>Guess</title>
+
+<script>
+var curNum=0;
+var deadNum=8;
+var minNum=0;
+var maxNum=99;
+function start(){
+}
+function guess(){
+if(curNum==deadNum){
+alert("You are loser,the dead number is " + deadNum);
+}
+if(curNum>deadNum){
+maxNum=curNum-1;
+curNum=maxNum;
+document.getElementById("guessNum").innerHTML=curNum;
+document.getElementById("maxNumber").innerHTML=maxNum;
+}else{
+minNum=curNum+1;
+curNum=minNum;
+document.getElementById("guessNum").innerHTML=curNum;
+document.getElementById("minNumber").innerHTML=minNum;
+}
+newGame();
+curNum=0;
+minNum=0;
+maxNum=99;
+deadNum=Math.round(Math.random()*maxNum);
+document.getElementById("guessNum").innerHTML=minNum;
+document.getElementById("maxNumber").innerHTML=maxNum;
+document.getElementById("minNumber").innerHTML=minNum;
+}
+function numberUp(){
+if(curNum<maxNum)curNum++;
+document.getElementById("guessNum").innerHTML=curNum;
+}
+function numberDown(){
+if(curNum>minNum)curNum--;
+document.getElementById("guessNum").innerHTML=curNum;
+}
+</script>
+</head><body onload="javascript:newGame()">
+<table style="text-align: left; width: 603px; height: 116px;" border="1" cellpadding="2" cellspacing="2">
+<tbody>
+<tr align="center">
+<td style="background-color: rgb(51, 255, 51);" colspan="3" rowspan="1"><span style="color: black;">Game
+Guess</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Lowest</td>
+<td style="text-align: center;">Guess number</td>
+<td style="text-align: center;">Highest</td>
+</tr>
+<tr>
+<td style="text-align: center;"><big><big><big><big><big><big><span id="minNumber">0</span></big></big></big></big></big></big></td>
+<td style="text-align: center;"><a href="javascript:numberUp()">up</a>
+<big><big><big><big><big><big><span id="guessNum">0</span></big></big></big></big></big></big> <a href="javascript:numberDown()">down</a> </td>
+<td style="text-align: center;"><big><big><big><big><big><big><span id="maxNumber">99</span></big></big></big></big></big></big></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><a href="javascript:guess()">Guess</a></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<br>
+</body></html>
